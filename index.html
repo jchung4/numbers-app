@@ -5,40 +5,80 @@
         <title>
             Arithmetic
         </title>
+        <style>
+            .column {
+               float: left;
+               width: 50%;
+               padding: 10px;
+               box-sizing: border-box;
+              
+            }
+            .row::after {
+               content: "";
+               clear: both;
+               display: table;
+            }
+         </style>
     </head>
-    <body>
-        <section>
-            <h2>Arithmetic</h2>
-            <input id="number1"/> 
-            <label>+</label>
-            <input id="number2"/> 
-            <button onclick="add()">=</button>
-            <label id="sum"></label>
-        </section>
 
-        <section>
-            <input id="number1Sub"/> 
-            <label>-</label>
-            <input id="number2Sub"/> 
-            <button onclick="subtract()">=</button>
-            <label id="difference"></label>
-        </section>
+    <body>
+        <div class="row">
+            <div class="column">  
+                <section>
+                    <h2>Arithmetic</h2>
+                    <input id="number1"/> 
+                    <label>+</label>
+                    <input id="number2"/> 
+                    <button onclick="add()">=</button>
+                    <label id="sum"></label>
+                </section>
+    
+                <section>
+                    <input id="number1Sub"/> 
+                    <label>-</label>
+                    <input id="number2Sub"/> 
+                    <button onclick="subtract()">=</button>
+                    <label id="difference"></label>
+                </section>
+            
+                <section>
+                    <input id="number1Mult"/> 
+                    <label>*</label>
+                    <input id="number2Mult"/> 
+                    <button onclick="multiply()">=</button>
+                    <label id="product"></label>
+                </section>
+            
+                <section>
+                    <input id="number1Div"/> 
+                    <label>/</label>
+                    <input id="number2Div"/> 
+                    <button onclick="divide()">=</button>
+                    <label id="quotient"></label>
+                </section>
+            </div>
+                <div class="column">
+                    <section>
+                        <h2>Prime check</h2>                
+                        <label>Number to test:</label>
+                        <input id="numberToTest"/>
+                        <button onclick="isPrime()">Check</button>
+                        <label id="primeCheckResult"></label>  
+                    </section>           
+                </div>
+    
+                <div class="column">
+                    <section>
+                        <h2>Ceasar cipher</h2>                
+                        <label>Text:</label>
+                        <input id="wordToCipher"/>
+                        <button onclick="isPrime()">Cipher</button>
+                        <label id="cipherResult"></label>  
+                    </section>           
+                </div>              
+            </div>
+        </div>
         
-        <section>
-            <input id="number1Mult"/> 
-            <label>*</label>
-            <input id="number2Mult"/> 
-            <button onclick="multiply()">=</button>
-            <label id="product"></label>
-        </section>
-        
-        <section>
-            <input id="number1Div"/> 
-            <label>/</label>
-            <input id="number2Div"/> 
-            <button onclick="divide()">=</button>
-            <label id="quotient"></label>
-        </section>
 
         <script>
             async function add(){
@@ -80,6 +120,14 @@
                 const quotient = await response.json();
                 document.getElementById("quotient").innerText = quotient;
             }
+
+            async function isPrime() {
+            const numberToTest = document.getElementById("numberToTest");            
+            let n = numberToTest.value;            
+            const response = await fetch("???" + n);
+            const result = await response.json();
+            document.getElementById("primeCheckResult").innerText = result;
+        }
         </script>
     </body>
 </html>
